@@ -61,3 +61,13 @@ jobs:
           sudo apt install libelf-dev ccache
           cd kernel_workspace/kernel_platform/common
           make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" RUSTC=../../prebuilts/rust/linux-x86/1.73.0b/bin/rustc PAHOLE=../../prebuilts/kernel-build-tools/linux-x86/bin/pahole LD=ld.lld HOSTLD=ld.lld O=out KCFLAGS+=-O2  gki_defconfig all
+
+      - name: Pack anykernel3
+        run: |
+         cd kernel_workspace/
+         git clone https://github.com/luyancib-org/Anykernel3 --depth=1
+         rm -rf Anykernel3/.git
+         cp kernel_platform/common/out/arch/arm64/boot/Image ./Anykernel3/Image
+         
+         
+         
