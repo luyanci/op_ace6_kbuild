@@ -1,0 +1,40 @@
+name: build normal
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+
+jobs:
+  Build-Kernel:
+    name: "Build kernel normal"
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: Set swap to 10G
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 10
+
+      - name: Set git config
+        run: |
+          git config --global user.name ${{ github.actor }}
+          git config --global user.email ${{ github.actor }}@users.noreply.github.com
+
+      - name: Install repo tool
+        run: |
+          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/repo
+          chmod a+x ~/repo
+          sudo mv ~/repo /usr/local/bin/repo
+
+      - name: sync
+        run: |
+          mkdir kernel_workspace && cd kernel_workspace
+          repo init -u https://github.com/luyanci/kernel_manifest_opus.git -b oneplus/sm8750 -m oneplus_ace_6.xml --depth=1
+          repo sync -C --no-tags --force-sync
+
+      - name: build
+        run:
+          cd kernel_workspace
+          ./kernel_platform/oplus/build/oplus_build_kernel.sh sun perf
