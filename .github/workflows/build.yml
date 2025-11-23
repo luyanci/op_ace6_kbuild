@@ -71,6 +71,11 @@ jobs:
          cd AnyKernel3
          zip -q -r "../AnyKernel3_Op_ACE6.zip" ./*
 
+      - name: Upload
+        uses: actions/upload-artifacts@v4
+        with:
+          name: Anykernel3
+          path: kernel_workspace/AnyKernel3_Op_ACE6.zip
 
          
          
