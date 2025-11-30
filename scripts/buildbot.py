@@ -10,33 +10,30 @@ API_HASH = "d524b414d21f4d37f08684c1df41ac9c"
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHATID")
 MESSAGE_THREAD_ID = os.environ.get("MESSAGE_THREAD_ID")
-DEVICE = os.environ.get("DEVICE")
-KPM= os.environ.get("KPM")
-lz4kd= os.environ.get("LZ4KD")
-BBR= os.environ.get("BBR")
+KSUVAR = os.environ.get("KSUVAR")
+SUSFS = os.environ.get("SUSFS")
+BBG = os.environ.get("BBG")
 MSG_TEMPLATE = """
 **New Build Published!**
 #{device}
 ```Kernel Info
 kernelver: {kernelversion}
+KsuVar: {ksuvar}
 KsuVersion: {Ksuver}
-KPM: {kpm}
-Lz4kd: {lz4kd} Lz4&zstd: {lz4_zstd}
-BBR: {BBR}
+SUSFS: {SUSFS}
+BBG: {BBG}
 ```
-testing for auto push...
+Please follow @gki_kernels_xiaoxiaow !
 """.strip()
 
 
 def get_caption():
     msg = MSG_TEMPLATE.format(
-        device=DEVICE,
         kernelversion=kernelversion,
-        kpm=KPM,
-        lz4kd=lz4kd,
+        ksuvar=KSUVAR,
         Ksuver=ksuver,
-        lz4_zstd=check_lz4_zstd(),
-        BBR=BBR,
+        BBG=BBG,
+        SUSFS=SUSFS,
     )
     if len(msg) > 1024:
         return f"{DEVICE}{kernelversion}"
@@ -97,14 +94,6 @@ def get_versions():
     ksuver=os.popen("echo $(git describe --tags $(git rev-list --tags --max-count=1))-$(git rev-parse --short HEAD)@$(git branch --show-current)").read().strip()
     ksuver+=f' ({os.environ.get("KSUVER")})'
     os.chdir(current_work)
-
-def check_lz4_zstd():
-    global lz4kd
-    if lz4kd == "Close":
-        return "Open"
-    else:
-        return "Close"
-    return "Close"
 
 async def main():
     print("[+] Uploading to telegram")

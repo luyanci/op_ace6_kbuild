@@ -9,10 +9,11 @@ on:
           description: "选择KSU变体"
           default: "RKSU"
           options:
+            - 'KSU'
             - 'SUKISU'
             - 'RKSU'
             - 'YCRKSU'
-            - 'KSU'
+            - 'XXKSU'
         BBG:
           type: boolean
           description: "启用 BBG"
@@ -69,6 +70,15 @@ jobs:
           repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync
           rm kernel_platform/common/android/abi_gki_protected_exports_* || echo "No protected exports!"
           rm kernel_platform/msm-kernel/android/abi_gki_protected_exports_* || echo "No protected exports!"
+          sed -i 's/ -dirty//g' kernel_platform/common/scripts/setlocalversion
+          sed -i 's/ -dirty//g' kernel_platform/msm-kernel/scripts/setlocalversion
+          sed -i 's/ -dirty//g' kernel_platform/external/dtc/scripts/setlocalversion
+          sed -i '$i res=$(echo "$res" | sed '\''s/-dirty//g'\'')' kernel_platform/common/scripts/setlocalversion
+          sed -i '$i res=$(echo "$res" | sed '\''s/-dirty//g'\'')' kernel_platform/msm-kernel/scripts/setlocalversion
+          sed -i '$i res=$(echo "$res" | sed '\''s/-dirty//g'\'')' kernel_platform/external/dtc/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "-ogki-${{github.actor}}"|' kernel_platform/common/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "-ogki-${{github.actor}}"|' kernel_platform/msm-kernel/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "-ogki-${{github.actor}}"|' kernel_platform/external/dtc/scripts/setlocalversion
 
       - name: Get scripts
         uses: actions/checkout@v4
@@ -87,7 +97,6 @@ jobs:
           if [ "${{ github.event.inputs.BBG }}" == "true" ]; then
             ARGS+=" --with-bbg"
           fi
-          echo "DEBUG: $ARGS"
           cd kernel_workspace
           ./configure $ARGS
 
@@ -114,5 +123,18 @@ jobs:
           name: Anykernel3
           path: kernel_workspace/AnyKernel3_Op_ACE6.zip
 
+      - name: Upload to telegram
+        run: |
+          if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
+            pip3 install telethon
+            python3 ./scripts/scripts/buildbot.py "./kernel_workspace/AnyKernel3_Op_ACE6.zip"
+          fi
+        env:
+          CHATID: ${{secrets.CHATID}}
+          BOT_TOKEN: ${{secrets.BOT_TOKEN}}
+          MESSAGE_THREAD_ID: ${{secrets.MESSAGE_THREAD_ID}}
+          KSUVAR: ${{ github.event.inputs.KSU }}
+          SUSFS: ${{ github.event.inputs.SUSFS }}
+          BBG: ${{ github.event.inputs.BBG }}
          
          
