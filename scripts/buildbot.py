@@ -101,7 +101,6 @@ def get_versions():
     kernelversion=get_kernel_versions()
     os.chdir(os.getcwd()+f"/../{ksu_folder}")
     ksuver=os.popen("echo $(git describe --tags $(git rev-list --tags --max-count=1))-$(git rev-parse --short HEAD)@$(git branch --show-current)").read().strip()
-    ksuver+=f' ({os.environ.get("KSUVER")})'
     os.chdir(current_work)
 
 async def main():
