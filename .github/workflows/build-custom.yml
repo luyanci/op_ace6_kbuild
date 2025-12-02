@@ -11,6 +11,8 @@ on:
           options:
             - 'KSU'
             - 'SUKISU'
+            - 'NEXT'
+            - 'WILD'
             - 'RKSU'
             - 'YCRKSU'
             - 'XXKSU'
