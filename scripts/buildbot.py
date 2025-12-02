@@ -93,7 +93,7 @@ def get_versions():
     current_work=os.getcwd()
     if KSU_VAR == "NEXT":
         ksu_folder="KernelSU-Next"
-    elif KSU_VAR == "Wild":
+    elif KSU_VAR == "WILD":
         ksu_folder="Wild_KSU"
     else:
         ksu_folder="KernelSU"
