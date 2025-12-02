@@ -91,9 +91,9 @@ def get_kernel_versions():
 def get_versions():
     global kernelversion,ksuver
     current_work=os.getcwd()
-    if KSU_VAR == "NEXT":
+    if KSUVAR == "NEXT":
         ksu_folder="KernelSU-Next"
-    elif KSU_VAR == "WILD":
+    elif KSUVAR == "WILD":
         ksu_folder="Wild_KSU"
     else:
         ksu_folder="KernelSU"
