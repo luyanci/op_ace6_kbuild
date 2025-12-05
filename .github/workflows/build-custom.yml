@@ -106,7 +106,7 @@ jobs:
           if [ "${{ github.event.inputs.BBG }}" == "true" ]; then
             ARGS+=" --with-bbg"
           fi
-          if [ "${{ github.event.inputs.KPM }}" == "true" && "${{ github.event.inputs.KSU }}" == "SUKISU" ]; then
+          if [ "${{ github.event.inputs.KPM }}" == "true" ] && [ "${{ github.event.inputs.KSU }}" == "SUKISU" ]; then
             ARGS+=" --kpm"
           fi
           if [ "${{ github.event.inputs.mountify }}" == "true" ]; then
