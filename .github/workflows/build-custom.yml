@@ -24,6 +24,10 @@ on:
           type: boolean
           description: "启用 SUSFS"
           default: false
+        KPM:
+          type: boolean
+          description: "启用 KPM (白名单限制启用)"
+          default: false
         mountify:
           type: boolean
           description: "启用 Mountify 模块支持"
@@ -101,6 +105,9 @@ jobs:
           fi
           if [ "${{ github.event.inputs.BBG }}" == "true" ]; then
             ARGS+=" --with-bbg"
+          fi
+          if [ "${{ github.event.inputs.KPM }}" == "true" && "${{ github.event.inputs.KSU }}" == "SUKISU" ]; then
+            ARGS+=" --kpm"
           fi
           if [ "${{ github.event.inputs.mountify }}" == "true" ]; then
             ARGS+=" --mountify"
