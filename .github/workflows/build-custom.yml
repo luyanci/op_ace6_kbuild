@@ -16,6 +16,7 @@ on:
             - 'RKSU'
             - 'YCRKSU'
             - 'XXKSU'
+            - 'RESUKISU'
         UPLOAD_TO_GH:
           required: true
           type: boolean
