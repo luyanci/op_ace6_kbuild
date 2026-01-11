@@ -13,8 +13,7 @@ MESSAGE_THREAD_ID = os.environ.get("MESSAGE_THREAD_ID")
 KSUVAR = os.environ.get("KSUVAR")
 SUSFS = os.environ.get("SUSFS")
 mountify = os.environ.get("mountify")
-zram = os.environ.get("zram")
-hymofs = os.environ.get("hymofs")
+zram = "false"
 BBG = os.environ.get("BBG")
 MSG_TEMPLATE = """
 **New Build Published!**
@@ -24,7 +23,6 @@ kernelver: {kernelversion}
 KsuVar: {ksuvar}
 KsuVersion: {Ksuver}
 SUSFS: {SUSFS}
-HymoFS: {hymofs}
 BBG: {BBG}
 Mountify support: {mountify}
 lz4+zstd: {zram}

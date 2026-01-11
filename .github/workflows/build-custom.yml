@@ -38,10 +38,6 @@ on:
           type: boolean
           description: "启用 Mountify 模块支持"
           default: false
-        hymofs:
-          type: boolean
-          description: "启用 HymoFS"
-          default: false
         ZRAM:
           type: boolean
           description: "使用 lz4 + zstd ZRAM补丁"
@@ -129,9 +125,6 @@ jobs:
           if [ "${{ github.event.inputs.ZRAM }}" == "true" ]; then
             ARGS+=" --zram"
           fi
-          if [ "${{ github.event.inputs.hymofs }}" == "true" ]; then
-            ARGS+=" --hymofs"
-          fi
           
           cd kernel_workspace
           ./configure $ARGS
@@ -174,7 +167,6 @@ jobs:
           SUSFS: ${{ github.event.inputs.SUSFS }}
           BBG: ${{ github.event.inputs.BBG }}
           mountify: ${{ github.event.inputs.mountify }}
-          hymofs: ${{ github.event.inputs.hymofs }}
           zram: ${{ github.event.inputs.ZRAM }}
          
          
