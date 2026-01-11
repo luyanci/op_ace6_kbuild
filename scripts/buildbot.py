@@ -40,7 +40,6 @@ def get_caption():
         SUSFS=SUSFS,
         mountify=mountify,
         zram=zram,
-        hymofs=hymofs,
     )
     if len(msg) > 1024:
         return f"{KSUVAR} {ksuver} {kernelversion}"
