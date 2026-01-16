@@ -42,6 +42,10 @@ on:
           type: boolean
           description: "使用 lz4 + zstd ZRAM补丁"
           default: false
+        fengchi:
+          type: boolean
+          description: "应用风驰补丁"
+          default: false
 jobs:
   Build-Kernel:
     name: "Build kernel normal"
@@ -125,6 +129,10 @@ jobs:
           if [ "${{ github.event.inputs.ZRAM }}" == "true" ]; then
             ARGS+=" --zram"
           fi
+          if [ "${{ github.event.inputs.fengchi }}" == "true" ]; then
+            ARGS+=" --fengchi"
+          fi
+
           
           cd kernel_workspace
           ./configure $ARGS
