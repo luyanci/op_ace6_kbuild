@@ -15,6 +15,7 @@ SUSFS = os.environ.get("SUSFS")
 mountify = os.environ.get("mountify")
 zram = "false"
 BBG = os.environ.get("BBG")
+fengchi = os.environ.get("Fengchi")
 MSG_TEMPLATE = """
 **New Build Published!**
 #ACE6
@@ -26,6 +27,7 @@ SUSFS: {SUSFS}
 BBG: {BBG}
 Mountify support: {mountify}
 lz4+zstd: {zram}
+fengchi support: {fengchi}
 ```
 Please follow @yc_op_Ace6_kbuild !
 """.strip()
@@ -40,6 +42,7 @@ def get_caption():
         SUSFS=SUSFS,
         mountify=mountify,
         zram=zram,
+        fengchi=fengchi,
     )
     if len(msg) > 1024:
         return f"{KSUVAR} {ksuver} {kernelversion}"

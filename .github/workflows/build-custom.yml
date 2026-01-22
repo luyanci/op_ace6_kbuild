@@ -176,5 +176,5 @@ jobs:
           BBG: ${{ github.event.inputs.BBG }}
           mountify: ${{ github.event.inputs.mountify }}
           zram: ${{ github.event.inputs.ZRAM }}
-         
+          Fengchi: ${{ github.event.inputs.fengchi }}
          
