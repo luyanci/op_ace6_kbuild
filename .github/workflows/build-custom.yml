@@ -14,7 +14,7 @@ on:
             - 'NEXT'
             - 'WILD'
             - 'RKSU'
-            - 'YCRKSU'
+            - 'MAMBOSU'
             - 'XXKSU'
             - 'RESUKISU'
         UPLOAD_TO_GH:
@@ -40,7 +40,7 @@ on:
           default: false
         ZRAM:
           type: choice
-          description: "使用 lz4 + zstd ZRAM补丁"
+          description: "使用 ZRAM 补丁"
           default: "DISABLE"
           options:
             - 'DISABLE'
