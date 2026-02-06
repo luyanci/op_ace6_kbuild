@@ -13,7 +13,7 @@ MESSAGE_THREAD_ID = os.environ.get("MESSAGE_THREAD_ID")
 KSUVAR = os.environ.get("KSUVAR")
 SUSFS = os.environ.get("SUSFS")
 mountify = os.environ.get("mountify")
-zram = "false"
+zram = os.environ.get("zram")
 BBG = os.environ.get("BBG")
 fengchi = os.environ.get("Fengchi")
 MSG_TEMPLATE = """
@@ -26,7 +26,7 @@ KsuVersion: {Ksuver}
 SUSFS: {SUSFS}
 BBG: {BBG}
 Mountify support: {mountify}
-lz4+zstd: {zram}
+zram: {zram}
 fengchi support: {fengchi}
 ```
 Please follow @yc_op_Ace6_kbuild !

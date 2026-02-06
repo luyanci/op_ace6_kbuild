@@ -39,9 +39,13 @@ on:
           description: "启用 Mountify 模块支持"
           default: false
         ZRAM:
-          type: boolean
+          type: choice
           description: "使用 lz4 + zstd ZRAM补丁"
-          default: false
+          default: "DISABLE"
+          options:
+            - 'DISABLE'
+            - 'LZ4'
+            - 'LZ4KD'
         fengchi:
           type: boolean
           description: "应用风驰补丁"
