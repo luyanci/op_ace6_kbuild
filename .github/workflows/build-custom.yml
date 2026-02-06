@@ -130,8 +130,8 @@ jobs:
           if [ "${{ github.event.inputs.mountify }}" == "true" ]; then
             ARGS+=" --mountify"
           fi
-          if [ "${{ github.event.inputs.ZRAM }}" == "true" ]; then
-            ARGS+=" --zram"
+          if [ "${{ github.event.inputs.ZRAM }}" != "DISABLE" ]; then
+            ARGS+=" --zram ${{ github.event.inputs.ZRAM }}"
           fi
           if [ "${{ github.event.inputs.fengchi }}" == "true" ]; then
             ARGS+=" --fengchi"
