@@ -16,7 +16,6 @@ The prebuilt tool `scripts/configure` acts as a build-time helper:
 
 ## Usage
 
-
 1. Fork this repository
 
 2. Enable the action
@@ -25,7 +24,7 @@ The prebuilt tool `scripts/configure` acts as a build-time helper:
 
 4. Drink something, wait for building done.
 
-5. Download the Anykernel3 package ,then flash it.Reboot to enjoy.
+5. Download the Anykernel3 package ,then flash it. Reboot to enjoy.
 
 ## License
 
