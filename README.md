@@ -18,17 +18,21 @@ The prebuilt tool `scripts/configure` acts as a build-time helper:
 
 
 1. Fork this repository
+
 2. Enable the action
+
 3. Trigger the GitHub Actions workflow named Build custom,and select what you want
+
 4. Drink something, wait for building done.
-Download the Anykernel3 package ,then flash it.Reboot to enjoy.
+
+5. Download the Anykernel3 package ,then flash it.Reboot to enjoy.
 
 ## License
 
 |Component|License|Detail|
 |-|-|-|
 |GitHub Actions Workflows|MIT License| See the LICENSE file for details |
-|Prebuilt Binary ( scripts/configure ) |BSD 2-Clause License |See the LICENSE-scripts-configure file for details |
+|Prebuilt Binary (`scripts/configure`) |BSD 2-Clause License |See the LICENSE-scripts-configure file for details |
 OEM Kernel Source Code |GPLv2 License| Comply with the original terms of the OEM kernel |
 
 ## Important Notes
