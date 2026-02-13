@@ -28,8 +28,7 @@ Oneplus ACE6 内核构建脚本，可以集成KernelSU及其变体 也包括SUSF
 |组件|许可证|详情|
 |--|--|--|
 |GitHub Actions 工作流|MIT 许可证|详见根目录 LICENSE 文件|
-|预编译二进制文件 (`scripts/configure`)|BSD 2-Clause 许可证 
-|详见根目录 LICENSE-scripts-configure 文件|
+|预编译二进制文件 (`scripts/configure`)|BSD 2-Clause 许可证|详见根目录 LICENSE-scripts-configure 文件|
 |OEM 内核源码|GPLv2 许可证|遵守 OEM 内核的原始许可条款 |
 
 ## 重要说明
