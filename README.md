@@ -37,8 +37,11 @@ OEM Kernel Source Code |GPLv2 License| Comply with the original terms of the OEM
 ## Important Notes
 
 1. `scripts/configure` is an independent build-time auxiliary tool. It only modifies the kernel build configuration files when specific features are enabled during the build phase, does not participate in kernel compilation or linking, and is not embedded into the final kernel image.
+
 2. The modification behavior of `scripts/configure` does not affect the GPLv2 licensing of the OEM kernel source code.
+
 3. When redistributing this repository, the original copyright notice and license text must be retained. When redistributing the compiled kernel package, users only need to comply with the GPLv2 terms of the OEM kernel and do not need to include the license information of this repository.
+
 4. The maintainer reserves the right of access control via the whitelist/blacklist logic in `scripts/configure`, which does not violate the terms of the BSD 2-Clause License.
 
  
