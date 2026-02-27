@@ -108,7 +108,7 @@ jobs:
           sed -i '$s|echo "\$res"|echo "-ogki-${{github.actor}}"|' kernel_platform/external/dtc/scripts/setlocalversion
 
       - name: Get scripts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with: 
           path: scripts
 
