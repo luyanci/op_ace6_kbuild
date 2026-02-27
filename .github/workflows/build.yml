@@ -78,6 +78,7 @@ jobs:
         with:
           name: Anykernel3
           path: kernel_workspace/AnyKernel3_Op_ACE6.zip
+          archive: false
 
          
          
