@@ -160,7 +160,7 @@ jobs:
 
       - name: Upload
         if: inputs.UPLOAD_TO_GH
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Anykernel3
           path: kernel_workspace/AnyKernel3_Op_ACE6.zip
