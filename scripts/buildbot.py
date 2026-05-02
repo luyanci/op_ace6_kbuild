@@ -19,35 +19,27 @@ fengchi = os.environ.get("Fengchi")
 MSG_TEMPLATE = """
 **New Build Published!**
 #ACE6
-```Kernel Info
-kernelver: {kernelversion}
-KsuVar: {ksuvar}
-KsuVersion: {Ksuver}
-SUSFS: {SUSFS}
-BBG: {BBG}
-Mountify support: {mountify}
-zram: {zram}
-fengchi support: {fengchi}
+```
+{kernelinfo}
 ```
 Please follow @yc_op_Ace6_kbuild !
 """.strip()
 
+def make_kernel_info():
+    current_work=os.getcwd()
+    os.chdir(current_work+"/kernel_workspace")
+    with open("config_summary.txt", "r") as f:
+        summary = f.read()
+    os.chdir(current_work)
+    return summary
 
 def get_caption():
     msg = MSG_TEMPLATE.format(
-        kernelversion=kernelversion,
-        ksuvar=KSUVAR,
-        Ksuver=ksuver,
-        BBG=BBG,
-        SUSFS=SUSFS,
-        mountify=mountify,
-        zram=zram,
-        fengchi=fengchi,
+        kernelinfo=make_kernel_info()
     )
     if len(msg) > 1024:
         return f"{KSUVAR} {ksuver} {kernelversion}"
     return msg
-
 
 def check_environ():
     global CHAT_ID, MESSAGE_THREAD_ID
