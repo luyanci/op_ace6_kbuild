@@ -154,7 +154,7 @@ jobs:
           if [ "${{ github.event.inputs.fengchi }}" == "true" ]; then
             ARGS+=" --fengchi"
           fi
-          if [ ! "${{ github.event.inputs.multi_manager }}" == "true" ] || [ ! "${{ github.event.inputs.KSU }}" == "RESUKISU" ]; then
+          if [ "${{ github.event.inputs.multi_manager }}" == "true" ] || [ ! "${{ github.event.inputs.KSU }}" == "RESUKISU" ]; then
             ARGS+=" --multi-manager"
           fi
           if [ "${{ github.event.inputs.droidspace }}" == "true" ]; then
