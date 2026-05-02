@@ -17,6 +17,11 @@ on:
             - 'MAMBOSU'
             - 'XXKSU'
             - 'RESUKISU'
+        KSU_BRANCH:
+          required: true
+          type: string
+          description: "KSU分支"
+          default: "default"
         UPLOAD_TO_GH:
           required: true
           type: boolean
@@ -36,7 +41,7 @@ on:
           default: false
         multi_manager:
           type: boolean
-          description: "启用 多管理器支持 (仅ReSukiSU)"
+          description: "禁用 多管理器支持 (仅ReSukiSU)"
           default: false
         mountify:
           type: boolean
@@ -54,6 +59,15 @@ on:
           type: boolean
           description: "应用风驰补丁"
           default: false
+        droidspace:
+          type: boolean
+          description: "Droidspace-OSS 支持"
+          default: false
+        edit_kernel_ver:
+          type: boolean
+          description: "不编辑内核版本"
+          default: false
+
 jobs:
   Build-Kernel:
     name: "Build kernel with ${{ github.event.inputs.KSU }}"
@@ -140,10 +154,16 @@ jobs:
           if [ "${{ github.event.inputs.fengchi }}" == "true" ]; then
             ARGS+=" --fengchi"
           fi
-          if [ "${{ github.event.inputs.multi_manager }}" == "true" ] && [ "${{ github.event.inputs.KSU }}" == "RESUKISU" ]; then
+          if [ ! "${{ github.event.inputs.multi_manager }}" == "true" ] || [ ! "${{ github.event.inputs.KSU }}" == "RESUKISU" ]; then
             ARGS+=" --multi-manager"
           fi
-          
+          if [ "${{ github.event.inputs.droidspace }}" == "true" ]; then
+            ARGS+=" --droidspace"
+          fi
+          if [ "${{ github.event.inputs.edit_kernel_ver }}" == "true" ]; then
+            ARGS+=" --no-ver-edit"
+          fi
+
           cd kernel_workspace
           ./configure $ARGS
 
