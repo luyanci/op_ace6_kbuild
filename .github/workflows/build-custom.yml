@@ -29,11 +29,11 @@ on:
         BBG:
           type: boolean
           description: "启用 BBG"
-          default: false
+          default: true
         SUSFS:
           type: boolean
           description: "启用 SUSFS"
-          default: false
+          default: true
         KPM:
           type: boolean
           description: "启用 KPM (白名单限制启用)"
@@ -41,7 +41,7 @@ on:
         multi_manager:
           type: boolean
           description: "禁用 多管理器支持 (仅ReSukiSU)"
-          default: false
+          default: true
         mountify:
           type: boolean
           description: "启用 Mountify 模块支持"
@@ -57,7 +57,7 @@ on:
         fengchi:
           type: boolean
           description: "应用风驰补丁"
-          default: false
+          default: true
         droidspace:
           type: boolean
           description: "Droidspace-OSS 支持"
