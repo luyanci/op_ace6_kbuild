@@ -198,6 +198,13 @@ jobs:
           path: kernel_workspace/AnyKernel3_Op_ACE6.zip
           archive: false
 
+      - name: Upload
+        # if: inputs.UPLOAD_TO_GH
+        uses: actions/upload-artifact@v7
+        with:
+          name: outputs
+          path: kernel_workspace/kernel_platform/common/out/
+
       - name: Upload to telegram
         run: |
           if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
