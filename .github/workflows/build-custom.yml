@@ -62,6 +62,10 @@ on:
           type: boolean
           description: "Droidspace-OSS 支持"
           default: false
+        ntsync:
+          type: boolean
+          description: "NTSync 支持"
+          default: false
         edit_kernel_ver:
           type: boolean
           description: "不编辑内核版本"
@@ -158,6 +162,9 @@ jobs:
           fi
           if [ "${{ github.event.inputs.droidspace }}" == "true" ]; then
             ARGS+=" --droidspace"
+          fi
+          if [ "${{ github.event.inputs.ntsync }}" == "true" ]; then
+            ARGS+=" --ntsync"
           fi
           if [ "${{ github.event.inputs.edit_kernel_ver }}" == "true" ]; then
             ARGS+=" --no-ver-edit"
