@@ -138,7 +138,7 @@ jobs:
           cp ./scripts/scripts/configure ./kernel_workspace/
           chmod +x ./kernel_workspace/configure
           
-          ARGS="--ksu-variant ${{ github.event.inputs.KSU }} --ksu-branch ${{ github.event.inputs.KSU_BRANCH }}"
+          ARGS="--ksu-variant ${{ github.event.inputs.KSU }} --ksu-branch ${{ github.event.inputs.KSU_BRANCH }} --test"
           if [ "${{ github.event.inputs.SUSFS }}" == "true" ]; then
             ARGS+=" --susfs"
           fi
