@@ -179,6 +179,7 @@ jobs:
           export PATH="/usr/lib/ccache:$PATH"
           sudo apt install libelf-dev ccache
           cd kernel_workspace/kernel_platform/common
+          sed -i '/CONFIG_KSU_MANUAL_HOOK/d' ./arch/arm64/configs/gki_defconfig
           make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" RUSTC=../../prebuilts/rust/linux-x86/1.73.0b/bin/rustc PAHOLE=../../prebuilts/kernel-build-tools/linux-x86/bin/pahole LD=ld.lld HOSTLD=ld.lld O=out KCFLAGS+=-O2  gki_defconfig all
 
       - name: Pack anykernel3
@@ -206,6 +207,7 @@ jobs:
           path: kernel_workspace/kernel_platform/common/out/
 
       - name: Upload to telegram
+        if: false
         run: |
           if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
             pip3 install telethon
