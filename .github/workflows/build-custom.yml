@@ -37,11 +37,11 @@ on:
         BBG:
           type: boolean
           description: "启用 BBG"
-          default: false
+          default: true
         SUSFS:
           type: boolean
           description: "启用 SUSFS"
-          default: false
+          default: true
         KPM:
           type: boolean
           description: "启用 KPM (白名单限制启用)"
@@ -53,7 +53,7 @@ on:
         mountify:
           type: boolean
           description: "启用 Mountify 模块支持"
-          default: false
+          default: true
         ZRAM:
           type: choice
           description: "使用 ZRAM 补丁"
@@ -65,11 +65,11 @@ on:
         fengchi:
           type: boolean
           description: "应用风驰补丁"
-          default: false
+          default: true
         droidspace:
           type: boolean
           description: "Droidspace-OSS 支持"
-          default: false
+          default: true
         ntsync:
           type: boolean
           description: "NTSync 支持"
