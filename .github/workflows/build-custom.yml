@@ -15,13 +15,11 @@ on:
           required: true
           type: choice
           description: "选择KSU变体"
-          default: "RKSU"
+          default: "KSU"
           options:
             - 'KSU'
             - 'NEXT'
-            - 'RKSU'
             - 'BAKASU'
-            - 'MAMBOSU'
             - 'XXKSU'
         KSU_BRANCH:
           required: true
