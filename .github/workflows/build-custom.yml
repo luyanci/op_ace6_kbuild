@@ -20,7 +20,6 @@ on:
             - 'KSU'
             - 'NEXT'
             - 'BAKASU'
-            - 'XXKSU'
         KSU_BRANCH:
           required: true
           type: string
